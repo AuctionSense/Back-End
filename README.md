@@ -1,2 +1,2 @@
 # Back-End
-The back-end of AuctionSense
+The back-end application of AuctionSense
