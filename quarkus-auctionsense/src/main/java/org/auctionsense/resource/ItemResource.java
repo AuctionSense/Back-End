@@ -1,6 +1,7 @@
 package org.auctionsense.resource;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -37,6 +38,13 @@ public class ItemResource {
     public List<Item> getAllItemsByCategory(@PathParam("category") String category)
     {
         return itemService.getAllItemsByCategory(category);
+    }
+    
+    @GET
+    @Path("/id={id}")
+    public Item getItemById(@PathParam("id") UUID id)
+    {
+        return itemService.getItemById(id);
     }
 
     @POST
