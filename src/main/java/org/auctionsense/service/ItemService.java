@@ -2,6 +2,7 @@ package org.auctionsense.service;
 
 import java.net.URI;
 import java.util.List;
+import java.util.UUID;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -27,9 +28,14 @@ public class ItemService {
         return itemRepository.listAll();
     }
 
-        public List<Item> getAllItemsByCategory(String category)
+    public List<Item> getAllItemsByCategory(String category)
     {
-        return itemRepository.find("#Item.getByCategory", Parameters.with("category", category).map()).list();
+        return itemRepository.find("#Items.getByCategory", Parameters.with("category", category).map()).list();
+    }
+
+    public Item getItemById(UUID id)
+    {
+        return itemRepository.find("#Item.getById", Parameters.with("id", id).map()).firstResult();
     }
 
     public Response addItem(Item item)
