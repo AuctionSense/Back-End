@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 public class ItemResourceTest {
 
     @Test
-    public void testHelloEndpoint() {
+    public void testItemsEndpoint() {
         given()
           .when().get("/api/items")
           .then()
