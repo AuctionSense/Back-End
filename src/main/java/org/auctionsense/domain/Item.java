@@ -7,8 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "items")
 @NamedQueries({
     @NamedQuery(name = "Items.getByCategory", query = "from Item where category = :category"),
     @NamedQuery(name = "Item.getById", query = "from Item where id = :id")
