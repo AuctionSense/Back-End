@@ -30,10 +30,9 @@ public class UserResource {
     @PermitAll
     public Result addUser(User user)
     {
-        if (user.getId() != null|| user.getRole() != "user")
-        {
-            return new Result("Cannot set id or role.", false);
-        }
+        User userCreate = new User();
+        userCreate.setUsername(user.getUsername());
+        userCreate.setPassword(user.getPassword());
         try {
             Result result = userService.addUser(user);
             return result;

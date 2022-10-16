@@ -12,8 +12,6 @@ import javax.validation.Validator;
 import org.auctionsense.domain.User;
 import org.auctionsense.repository.UserRepository;
 
-import com.fasterxml.jackson.databind.deser.impl.CreatorCandidate.Param;
-
 import io.quarkus.elytron.security.common.BcryptUtil;
 import io.quarkus.panache.common.Parameters;
 
