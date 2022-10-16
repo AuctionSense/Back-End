@@ -9,8 +9,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'io.quarkus:quarkus-hibernate-validator'
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'io.quarkus:quarkus-hibernate-validator'
     implementation 'io.quarkus:quarkus-hibernate-orm-rest-data-panache'
     implementation 'io.quarkus:quarkus-resteasy-reactive-jackson'
     implementation 'io.quarkus:quarkus-resteasy-reactive'
