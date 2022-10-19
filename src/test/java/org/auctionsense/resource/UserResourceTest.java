@@ -45,7 +45,7 @@ public class UserResourceTest {
             .statusCode(StatusCode.OK)
             .extract().body().as(getResultTypeRef());
 
-        logger.info("LOGGING MESSAGE:" + result.getMessage());
+        //logger.info("LOGGING MESSAGE:" + result.getMessage()); THIS IS HOW YOU LOG TO CONSOLE IN TESTS, MAKE SURE Toggle test output IS ON
         // Assert
         assertTrue(result.getMessage().contains("Username already exists."));
     }

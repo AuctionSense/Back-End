@@ -33,8 +33,9 @@ public class UserResource {
         User userCreate = new User();
         userCreate.setUsername(user.getUsername());
         userCreate.setPassword(user.getPassword());
+
         try {
-            Result result = userService.addUser(user);
+            Result result = userService.addUser(userCreate);
             return result;
         } catch (ConstraintViolationException e) {
             return new Result(e.getConstraintViolations());

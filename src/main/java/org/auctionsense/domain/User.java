@@ -31,7 +31,6 @@ public class User {
     @Username
     @NotBlank(message = "Username cannot be empty.")
     @Size(min = 4, max = 16, message = "Username should have a size of [{min}, {max}]")
-    @Pattern(regexp = "^[a-zA-Z][a-zA-Z0-9]+$", message = "\"username\" should start with a letter and should only accept letters and numbers")
     private String username;
 
     @Password
@@ -62,5 +61,9 @@ public class User {
 
     public String getRole() {
         return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
