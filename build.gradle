@@ -10,6 +10,7 @@ repositories {
 
 dependencies {
     implementation 'io.quarkus:quarkus-keycloak-authorization'
+    implementation 'io.quarkus:quarkus-oidc-client'
     implementation 'io.quarkus:quarkus-oidc'
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
     implementation 'io.quarkus:quarkus-hibernate-validator'
@@ -20,6 +21,7 @@ dependencies {
     implementation 'io.quarkus:quarkus-jdbc-h2:2.13.1.Final'
     implementation 'io.quarkus:quarkus-security-jpa'
     implementation 'io.quarkus:quarkus-arc'
+    
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'
 }

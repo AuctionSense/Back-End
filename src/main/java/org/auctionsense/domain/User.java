@@ -9,9 +9,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import io.quarkus.security.identity.SecurityIdentity;
 import io.quarkus.security.jpa.Password;
 import io.quarkus.security.jpa.Roles;
 import io.quarkus.security.jpa.UserDefinition;
@@ -38,7 +38,14 @@ public class User {
 
     @Roles
     private String role = "user";
+
+    public User() {
+    }
     
+    public User(SecurityIdentity identity) {
+        this.username = identity.getPrincipal().getName();
+    }
+
     public UUID getId() {
         return id;
     }

@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
 import javax.validation.Validator;
@@ -29,6 +30,7 @@ public class UserService {
 
     }
 
+    @Transactional
     public Result addUser(@Valid User user)
     {
         if (checkIfUserExists(user))
