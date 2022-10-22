@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.auctionsense.domain.User;
 import org.auctionsense.service.UserService.Result;
-import org.jboss.logging.Logger;
+//import org.jboss.logging.Logger;
 import org.jboss.resteasy.reactive.RestResponse.StatusCode;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +24,7 @@ public class UserResourceTest {
     private static final String DEFAULT_PASSWORD = "testPassword";
     private static final String NAME_EXISTS = "testUser";
 
-    private static final Logger logger = Logger.getLogger(UserResourceTest.class);
+    //private static final Logger logger = Logger.getLogger(UserResourceTest.class);
 
     @Test
     public void Cannot_Create_User_That_Exists()
