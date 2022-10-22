@@ -7,8 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
+@Table(name = "items")
 @NamedQueries({
     @NamedQuery(name = "Items.getByCategory", query = "from Item where category = :category"),
     @NamedQuery(name = "Item.getById", query = "from Item where id = :id")
@@ -17,7 +20,9 @@ public class Item {
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
+    @NotBlank(message = "Item needs to have a name.")
     private String name;
+    @NotBlank(message = "Item needs a description.")
     private String description;
     private String category;
 

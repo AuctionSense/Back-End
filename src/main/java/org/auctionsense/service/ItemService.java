@@ -43,7 +43,5 @@ public class ItemService {
         itemRepository.persist(item);
         return Response.created(URI.create("/items/" + item.getId())).build();
     }
-
-
 }
 
