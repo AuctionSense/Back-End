@@ -13,7 +13,7 @@ public class UserResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String admin() {
-        return "granted";
+    public String user() {
+        return "is user";
     }
 }
