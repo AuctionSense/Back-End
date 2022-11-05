@@ -10,8 +10,8 @@ jobs:
     services:
       keycloak:
         image: jarnoweemen/auctionsense:keycloak-auctionsense
-        credentials:
-          username: jarnoweemen
+        with:
+          username: ${{ secrets.DOCKER_CONTAINER_REGISTRY_NAME }}
           password: ${{ secrets.DOCKER_CONTAINER_REGISTRY_TOKEN }}
         ports:
           - 8484:8484
