@@ -2,17 +2,22 @@ name: Build Gradle project
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build-gradle-project:
     runs-on: ubuntu-latest
+    services:
+      keycloak:
+        image: jarnoweemen/auctionsense:keycloak-auctionsense
+        ports:
+          - 8484:8484
     steps:
-    - name: Checkout project sources
-      uses: actions/checkout@v2
-    - name: Setup Gradle
-      uses: gradle/gradle-build-action@v2
-    - name: Change wrapper permissions
-      run: chmod +x ./gradlew
-    - name: Run build with Gradle Wrapper
-      run: ./gradlew build
+      - name: Checkout project sources
+        uses: actions/checkout@v3
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+      - name: Run build with Gradle Wrapper
+        run: ./gradlew build
