@@ -7,6 +7,14 @@ on:
 jobs:
   build-gradle-project:
     runs-on: ubuntu-latest
+    services:
+      keycloak:
+        image: ${{ secrets.DOCKER_CONTAINER_IMAGE_KEYCLOAK }}
+        credentials:
+          username: ${{ secrets.DOCKER_CONTAINER_REGISTRY_NAME }}
+          password: ${{ secrets.DOCKER_CONTAINER_REGISTRY_TOKEN }}
+        ports:
+          - 8484:8484
     steps:
     - name: Checkout project sources
       uses: actions/checkout@v2
