@@ -15,7 +15,8 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name = "users")
 @NamedQueries({
-    @NamedQuery(name = "User.getBalanceByEmail", query = "from User where email = :email"),
+    @NamedQuery(name = "User.getByEmail", query = "from User where email = :email"),
+    @NamedQuery(name = "User.updateBalance", query = "update User set balance = :balance where email = :email"),
 })
 public class User {
     @Id
