@@ -35,15 +35,15 @@ public class ItemResource {
     }
 
     @GET
-    @Path("/{category}")
-    public List<Item> getAllItemsByCategory(String category)
+    @Path("/category={category}")
+    public List<Item> getAllItemsByCategory(@PathParam("category") String category)
     {
         return itemService.getAllItemsByCategory(category);
     }
     
     @GET
-    @Path("/{id}")
-    public Item getItemById(UUID id)
+    @Path("/id={id}")
+    public Item getItemById(@PathParam("id") UUID id)
     {
         return itemService.getItemById(id);
     }
