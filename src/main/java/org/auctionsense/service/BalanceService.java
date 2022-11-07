@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 
 import org.auctionsense.domain.User;
 import org.auctionsense.repository.UserRepository;
-import org.jboss.logging.Logger;
 
 import io.quarkus.panache.common.Parameters;
 

@@ -33,9 +33,9 @@ public class ItemService {
         return itemRepository.find("#Items.getByCategory", Parameters.with("category", category).map()).list();
     }
 
-    public Item getItemById(UUID id)
+    public Item getItemByName(String name)
     {
-        return itemRepository.find("#Item.getById", Parameters.with("id", id).map()).firstResult();
+        return itemRepository.find("#Item.getByName", Parameters.with("name", name).map()).firstResult();
     }
 
     public Response addItem(Item item)

@@ -42,10 +42,10 @@ public class ItemResource {
     }
     
     @GET
-    @Path("/id={id}")
-    public Item getItemById(@PathParam("id") UUID id)
+    @Path("/name={name}")
+    public Item getItemByName(@PathParam("name") String name)
     {
-        return itemService.getItemById(id);
+        return itemService.getItemByName(name);
     }
 
     @POST

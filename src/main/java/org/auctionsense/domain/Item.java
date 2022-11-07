@@ -14,7 +14,7 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "items")
 @NamedQueries({
     @NamedQuery(name = "Items.getByCategory", query = "from Item where category = :category"),
-    @NamedQuery(name = "Item.getById", query = "from Item where id = :id")
+    @NamedQuery(name = "Item.getByName", query = "from Item where name = :name")
 })
 public class Item {
     @Id
