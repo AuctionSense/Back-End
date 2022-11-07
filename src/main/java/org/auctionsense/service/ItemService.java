@@ -2,7 +2,6 @@ package org.auctionsense.service;
 
 import java.net.URI;
 import java.util.List;
-import java.util.UUID;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

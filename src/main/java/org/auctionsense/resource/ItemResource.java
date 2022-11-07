@@ -1,7 +1,6 @@
 package org.auctionsense.resource;
 
 import java.util.List;
-import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
