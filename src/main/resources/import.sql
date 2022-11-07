@@ -1,3 +1,9 @@
-INSERT INTO items (id, name, description, category) VALUES ('0d313ace-b100-4a5e-82cd-59696de5e64c', 'testItemOne', 'This is the first item!', 'games');
-INSERT INTO items (id, name, description, category) VALUES ('2d313ace-b100-2a5e-82cd-59696de5e64c', 'testItemTwo', 'This is the second item!', 'cars');
-INSERT INTO items (id, name, description, category) VALUES ('80a89e72-47d0-11ed-b878-0242ac120002', 'testItemThree', 'This is the third item!', 'games');
+INSERT INTO items (id, name, description, category) VALUES ('0d313ace-b100-4a5e-82cd-59696de5e64c', 'testItemOne', 'This is the first item!', 'Games');
+INSERT INTO items (id, name, description, category) VALUES ('2d313ace-b100-2a5e-82cd-59696de5e64c', 'testItemTwo', 'This is the second item!', 'Cars');
+INSERT INTO items (id, name, description, category) VALUES ('80a89e72-47d0-11ed-b878-0242ac120002', 'testItemThree', 'This is the third item!', 'Games');
+
+INSERT INTO categories (id, name) VALUES ('80a89e72-47d0-11ed-b878-0242ac120003', 'Games');
+INSERT INTO categories (id, name) VALUES ('80a89e72-47d0-11ed-b878-0242ac120004', 'Cars');
+
+INSERT INTO users (id, email, balance) VALUES ('80a89e72-47d0-11ed-b878-0242ac120005', 'admin@gmail.com', 5.23);
+INSERT INTO users (id, email, balance) VALUES ('80a89e72-47d0-11ed-b878-0242ac120007', 'alice@gmail.com', 14.55);
