@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.auctionsense.domain.User;
 import org.auctionsense.repository.UserRepository;
+import org.jboss.logging.Logger;
 
 import io.quarkus.panache.common.Parameters;
 
@@ -18,7 +19,7 @@ public class BalanceService {
 
     @Inject
     UserService userService;
-    
+
     public BalanceService() {
 
     }
@@ -37,7 +38,9 @@ public class BalanceService {
             return "{\"message\": \"User doesn't exist.\"}";
         }
 
-        userRepository.update("#User.updateBalance", Parameters.with("email", email).and("balance", balance));
-        return "{\"message\": \"Balance succesfully updated.\"}";
+        BigDecimal newBalance = balance.add(getBalanceByEmail(email));
+
+        userRepository.update("#User.updateBalance", Parameters.with("email", email).and("balance", newBalance));
+        return "{\"message\": \"Balance succesfully updated.\", \"newBalance\": \"" + newBalance.toString() + "\"}";
     }
 }
