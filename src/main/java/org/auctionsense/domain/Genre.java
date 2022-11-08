@@ -8,33 +8,32 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "categories")
-public class Category {
+@Table(name = "genres")
+@NamedQueries({
+        @NamedQuery(name = "Genre.getAllGenresByCategoryId", query = "select g.id, g.name from Genre as g " +
+        "join g.categories as c " +
+        "where c.id = :categoryId"),
+})
+public class Genre {
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
     @NotBlank(message = "Name cannot be blank.")
     private String name;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinTable(
-        name = "categories_genres",
-        joinColumns = {@JoinColumn(name = "category_id")},
-        inverseJoinColumns = {@JoinColumn(name = "genre_id")}
-    )
-    private List<Genre> genres;
+    @ManyToMany(mappedBy = "genres", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    public List<Category> categories;
 
-    public Category() {
-        
+    public Genre() {
     }
 
-    public Category(String name) {
+    public Genre(String name) {
         this.name = name;
     }
 
@@ -48,13 +47,5 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setGenres(List<Genre> genres) {
-        this.genres = genres;
-    }
-
-    public List<Genre> getGenres() {
-        return genres;
     }
 }

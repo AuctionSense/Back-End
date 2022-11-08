@@ -5,5 +5,13 @@ INSERT INTO items (id, name, description, category) VALUES ('80a89e72-47d0-11ed-
 INSERT INTO categories (id, name) VALUES ('80a89e72-47d0-11ed-b878-0242ac120003', 'Games');
 INSERT INTO categories (id, name) VALUES ('80a89e72-47d0-11ed-b878-0242ac120004', 'Cars');
 
+INSERT INTO genres (id, name) VALUES('80a89e72-47d0-11ed-b878-0242ac120014', 'fantasy');
+INSERT INTO genres (id, name) VALUES('80a89e72-47d0-11ed-b878-0242ac120015', 'sport');
+
+INSERT INTO categories_genres (category_id, genre_id) VALUES('80a89e72-47d0-11ed-b878-0242ac120003','80a89e72-47d0-11ed-b878-0242ac120014');
+INSERT INTO categories_genres (category_id, genre_id) VALUES('80a89e72-47d0-11ed-b878-0242ac120003','80a89e72-47d0-11ed-b878-0242ac120015');
+INSERT INTO categories_genres (category_id, genre_id) VALUES('80a89e72-47d0-11ed-b878-0242ac120004','80a89e72-47d0-11ed-b878-0242ac120015');
+
+
 INSERT INTO users (id, email, balance) VALUES ('80a89e72-47d0-11ed-b878-0242ac120005', 'admin@gmail.com', 5.23);
 INSERT INTO users (id, email, balance) VALUES ('80a89e72-47d0-11ed-b878-0242ac120007', 'alice@gmail.com', 14.55);
