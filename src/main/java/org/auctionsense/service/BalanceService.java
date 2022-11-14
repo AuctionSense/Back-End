@@ -29,7 +29,7 @@ public class BalanceService {
 
     public String getBalanceByEmail(String email)
     {
-        if (email != securityIdentity.getPrincipal().getName())
+        if (!securityIdentity.getPrincipal().getName().equals(email))
         {
             return "{\"message\": \"User and token aren't correct.\"}";
         }
@@ -40,7 +40,7 @@ public class BalanceService {
     @Transactional
     public String UpdateBalance(String email, BigDecimal amount)
     {
-        if (email != securityIdentity.getPrincipal().getName())
+        if (!securityIdentity.getPrincipal().getName().equals(email))
         {
             return "{\"message\": \"User and token aren't correct.\"}";
         }
