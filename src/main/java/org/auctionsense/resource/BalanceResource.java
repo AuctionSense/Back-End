@@ -30,9 +30,9 @@ public class BalanceResource {
     }
 
     @PUT
-    @Path("/{email}/{balance}")
-    public String UpdateBalance(String email, BigDecimal balance)
+    @Path("/{email}/{amount}")
+    public String UpdateBalance(String email, BigDecimal amount)
     {
-        return balanceService.UpdateBalance(email, balance);
+        return balanceService.UpdateBalance(email, amount);
     }
 }
