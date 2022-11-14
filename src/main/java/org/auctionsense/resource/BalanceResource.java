@@ -24,7 +24,7 @@ public class BalanceResource {
 
     @GET
     @Path("/{email}")
-    public BigDecimal GetUserBalance(String email)
+    public String GetUserBalance(String email)
     {
         return balanceService.getBalanceByEmail(email);
     }
