@@ -49,11 +49,11 @@ public class User {
         this.email = email;
     }
 
-    public BigDecimal getPrice() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setPrice(BigDecimal balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 }

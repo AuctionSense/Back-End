@@ -34,7 +34,7 @@ public class BalanceService {
             return "{\"message\": \"User and token aren't correct.\"}";
         }
         User user = userRepository.find("#User.getByEmail", Parameters.with("email", email).map()).firstResult();
-        return user.getPrice().toString();
+        return user.getBalance().toString();
     }
 
     @Transactional
