@@ -24,15 +24,15 @@ public class BalanceResource {
 
     @GET
     @Path("/{email}")
-    public BigDecimal GetUserBalance(String email)
+    public String GetUserBalance(String email)
     {
         return balanceService.getBalanceByEmail(email);
     }
 
     @PUT
-    @Path("/{email}/{balance}")
-    public String UpdateBalance(String email, BigDecimal balance)
+    @Path("/{email}/{amount}")
+    public String UpdateBalance(String email, BigDecimal amount)
     {
-        return balanceService.UpdateBalance(email, balance);
+        return balanceService.UpdateBalance(email, amount);
     }
 }

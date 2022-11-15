@@ -10,20 +10,20 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.not;
 
 @QuarkusTest
-@TestHTTPEndpoint(ItemResource.class)
-public class ItemResourceTest {
+@TestHTTPEndpoint(ProductResource.class)
+public class ProductResourceTest {
     @Test
-    public void Test_Item_Endpoint() {
+    public void Test_Product_Endpoint() {
         given()
-          .when().get()
+          .when().get("/category/Games")
           .then()
              .statusCode(StatusCode.OK);
     }
 
     @Test
-    public void When_Get_Items_Result_Is_Not_Zero_Or_Null() {
+    public void When_Get_Products_Result_Is_Not_Zero_Or_Null() {
         given()
-          .when().get()
+          .when().get("/category/Games")
           .then()
              .statusCode(StatusCode.OK)
              .body("size()", not(0));
