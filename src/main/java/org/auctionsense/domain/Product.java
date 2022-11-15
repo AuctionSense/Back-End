@@ -17,9 +17,8 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name = "products")
 @NamedQueries({
-    @NamedQuery(name = "Products.getByCategory", query = "select p.id, p.name, p.description, c.name from Product p " +
-    "join p.category as c " +
-    "where c.name = :category"),
+    @NamedQuery(name = "Products.getByCategory", query = "from Product p " +
+    "where p.category.name = :category"),
     @NamedQuery(name = "Product.getByName", query = "from Product where name = :name")
 })
 public class Product {
