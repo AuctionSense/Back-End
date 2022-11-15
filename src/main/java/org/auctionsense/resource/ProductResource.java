@@ -26,14 +26,14 @@ public class ProductResource {
     }
 
     @GET
-    @Path("/category={category}")
+    @Path("/category/{category}")
     public List<Product> getAllProductsByCategory(@PathParam("category") String category)
     {
         return productService.getAllProductsByCategory(category);
     }
     
     @GET
-    @Path("/name={name}")
+    @Path("/name/{name}")
     public Product getProductByName(@PathParam("name") String name)
     {
         return productService.getProductByName(name);

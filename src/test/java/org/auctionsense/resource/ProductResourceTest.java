@@ -15,7 +15,7 @@ public class ProductResourceTest {
     @Test
     public void Test_Product_Endpoint() {
         given()
-          .when().get("/category=Games")
+          .when().get("/category/Games")
           .then()
              .statusCode(StatusCode.OK);
     }
@@ -23,7 +23,7 @@ public class ProductResourceTest {
     @Test
     public void When_Get_Products_Result_Is_Not_Zero_Or_Null() {
         given()
-          .when().get("/category=Games")
+          .when().get("/category/Games")
           .then()
              .statusCode(StatusCode.OK)
              .body("size()", not(0));
