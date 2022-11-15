@@ -3,9 +3,17 @@ INSERT INTO categories (id, name) VALUES ('80a89e72-47d0-11ed-b878-0242ac120004'
 
 INSERT INTO genres (id, name) VALUES('80a89e72-47d0-11ed-b878-0242ac120014', 'fantasy');
 INSERT INTO genres (id, name) VALUES('80a89e72-47d0-11ed-b878-0242ac120015', 'sport');
+INSERT INTO genres (id, name) VALUES('80a89e72-47d0-11ed-b878-0242ac120016', 'roguelike');
+INSERT INTO genres (id, name) VALUES('80a89e72-47d0-11ed-b878-0242ac120017', 'adventure');
+INSERT INTO genres (id, name) VALUES('80a89e72-47d0-11ed-b878-0242ac120018', 'rpg');
+INSERT INTO genres (id, name) VALUES('80a89e72-47d0-11ed-b878-0242ac120019', 'sandbox');
 
 INSERT INTO categories_genres (category_id, genre_id) VALUES('80a89e72-47d0-11ed-b878-0242ac120003','80a89e72-47d0-11ed-b878-0242ac120014');
 INSERT INTO categories_genres (category_id, genre_id) VALUES('80a89e72-47d0-11ed-b878-0242ac120003','80a89e72-47d0-11ed-b878-0242ac120015');
+INSERT INTO categories_genres (category_id, genre_id) VALUES('80a89e72-47d0-11ed-b878-0242ac120003','80a89e72-47d0-11ed-b878-0242ac120016');
+INSERT INTO categories_genres (category_id, genre_id) VALUES('80a89e72-47d0-11ed-b878-0242ac120003','80a89e72-47d0-11ed-b878-0242ac120017');
+INSERT INTO categories_genres (category_id, genre_id) VALUES('80a89e72-47d0-11ed-b878-0242ac120003','80a89e72-47d0-11ed-b878-0242ac120018');
+INSERT INTO categories_genres (category_id, genre_id) VALUES('80a89e72-47d0-11ed-b878-0242ac120003','80a89e72-47d0-11ed-b878-0242ac120019');
 INSERT INTO categories_genres (category_id, genre_id) VALUES('80a89e72-47d0-11ed-b878-0242ac120004','80a89e72-47d0-11ed-b878-0242ac120015');
 
 INSERT INTO products (id, name, description, category_id) VALUES ('0d313ace-b100-4a5e-82cd-59696de5e64c', 'Minecraft (PC)', 'Minecraft is een sandbox-game ontwikkeld door Mojang Studios. Het spel is gemaakt door Markus "Notch" Persson in de programmeertaal Java. Na verschillende vroege privé-', '80a89e72-47d0-11ed-b878-0242ac120003');

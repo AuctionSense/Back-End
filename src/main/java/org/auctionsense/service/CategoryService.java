@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 import org.auctionsense.domain.Category;
 import org.auctionsense.repository.CategoryRepository;
-import org.auctionsense.repository.GenreReposityory;
+import org.auctionsense.repository.GenreRepository;
 
 import io.quarkus.panache.common.Parameters;
 
@@ -17,7 +17,7 @@ public class CategoryService {
     CategoryRepository categoryRepository;
 
     @Inject
-    GenreReposityory genreReposityory;
+    GenreRepository genreReposityory;
 
     public CategoryService() {
 

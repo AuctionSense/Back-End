@@ -7,6 +7,6 @@ import org.auctionsense.domain.Genre;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 @ApplicationScoped
-public class GenreReposityory implements PanacheRepository<Genre> {
+public class GenreRepository implements PanacheRepository<Genre> {
     
 }
