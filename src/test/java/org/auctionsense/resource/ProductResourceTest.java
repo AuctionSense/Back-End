@@ -7,26 +7,31 @@ import org.jboss.resteasy.reactive.RestResponse.StatusCode;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
 @TestHTTPEndpoint(ProductResource.class)
 public class ProductResourceTest {
-    @Test
-    public void Test_Product_Endpoint() {
-        given()
-          .when().get("/category/Games")
-          .then()
-             .statusCode(StatusCode.OK);
-    }
 
-    @Test
-    public void When_Get_Products_Result_Is_Not_Zero_Or_Null() {
-        given()
-          .when().get("/category/Games")
-          .then()
-             .statusCode(StatusCode.OK)
-             .body("size()", not(0));
-    }
+  @Test
+  public void When_Get_Products_By_Category_Result_Is_Equal_To_Assertion() {
+    given()
+        .when().get("/category/Games")
+        .then()
+        .statusCode(StatusCode.OK)
+        .body("size()", is(1),
+            "[0].name", is("testItemOne"),
+            "[0].description", is("This is the first item!"));
+  }
 
+  @Test
+  public void When_Get_Product_By_Name_Result_Is_Equal_To_Assertion() {
+    given()
+    .when().get("/name/testItemTwo")
+    .then()
+    .statusCode(StatusCode.OK)
+    .body("size()", is(3),
+        "name", is("testItemTwo"),
+        "description", is("This is the second item!"));
+  }
 }

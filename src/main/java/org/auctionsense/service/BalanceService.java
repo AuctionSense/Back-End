@@ -40,24 +40,19 @@ public class BalanceService {
     @Transactional
     public String UpdateBalance(String email, BigDecimal amount)
     {
-        if (!securityIdentity.getPrincipal().getName().equals(email))
-        {
-            return "{\"message\": \"User and token aren't correct.\"}";
-        }
-
         if (!userService.checkIfUserExists(email))
         {
             return "{\"message\": \"User doesn't exist.\"}";
         }
 
-        if (amount.intValue() < 10)
+        if (!securityIdentity.getPrincipal().getName().equals(email))
         {
-            return "{\"message\": \"Minimum amount is €10,-\"}";
+            return "{\"message\": \"User and token aren't correct.\"}";
         }
-        
-        if (amount.intValue() > 1000)
+
+        if (amount.intValue() < 10 || amount.intValue() > 1000)
         {
-            return "{\"message\": \"Maximum amount is €1000,-\"}";
+            return "{\"message\": \"Minimum amount is €10,- and maximum amount is €1000,-\"}";
         }
 
         BigDecimal oldBalance = new BigDecimal(getBalanceByEmail(email));
