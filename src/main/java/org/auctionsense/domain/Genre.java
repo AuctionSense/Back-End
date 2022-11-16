@@ -18,8 +18,11 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "genres")
 @NamedQueries({
         @NamedQuery(name = "Genre.getAllGenresByCategoryId", query = "select new Genre(g.id, g.name) from Genre as g " +
-        "inner join g.categories as c " +
+        "join g.categories as c " +
         "where c.id = :categoryId"),
+        @NamedQuery(name = "Genre.getAllGenresByCategoryName", query = "select new Genre(g.id, g.name) from Genre as g " +
+        "join g.categories as c " +
+        "where c.name = :categoryName"),
 })
 public class Genre {
     @Id

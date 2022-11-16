@@ -17,7 +17,7 @@ public class CategoryService {
     CategoryRepository categoryRepository;
 
     @Inject
-    GenreRepository genreReposityory;
+    GenreRepository genreRepository;
 
     public CategoryService() {
 
@@ -27,7 +27,7 @@ public class CategoryService {
     {
         List<Category> categories = categoryRepository.listAll();
         for (Category category : categories) {
-            category.setGenres(genreReposityory.find("#Genre.getAllGenresByCategoryId", Parameters.with("categoryId", category.getId())).list());
+            category.setGenres(genreRepository.find("#Genre.getAllGenresByCategoryId", Parameters.with("categoryId", category.getId())).list());
         }
         return categories;
     }
