@@ -20,7 +20,6 @@ public class ProductService {
 
     }
 
-
     public List<Product> getAllProductsByCategory(String category)
     {
         return productRepository.find("#Products.getByCategory", Parameters.with("category", category).map()).list();

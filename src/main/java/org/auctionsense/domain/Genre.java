@@ -17,9 +17,12 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name = "genres")
 @NamedQueries({
-        @NamedQuery(name = "Genre.getAllGenresByCategoryId", query = "select g.id, g.name from Genre as g " +
+        @NamedQuery(name = "Genre.getAllGenresByCategoryId", query = "select new Genre(g.id, g.name) from Genre as g " +
         "join g.categories as c " +
         "where c.id = :categoryId"),
+        @NamedQuery(name = "Genre.getAllGenresByCategoryName", query = "select new Genre(g.id, g.name) from Genre as g " +
+        "join g.categories as c " +
+        "where c.name = :categoryName"),
 })
 public class Genre {
     @Id
@@ -33,7 +36,8 @@ public class Genre {
     public Genre() {
     }
 
-    public Genre(String name) {
+    public Genre(UUID id, String name) {
+        this.id = id;
         this.name = name;
     }
 
