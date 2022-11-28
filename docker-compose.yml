@@ -1,0 +1,21 @@
+version: "1.0"
+services:
+  keycloak:
+    image: jarnoweemen/auctionsense:keycloak-auctionsense
+    container_name: keycloak
+    ports:
+      - "8484:8484"
+    networks:
+      - auctionsense_network
+
+  postgres:
+    image: jarnoweemen/auctionsense:postgres-auctionsense
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - auctionsense_network
+      
+networks:
+  auctionsense_network:
+    driver: bridge
