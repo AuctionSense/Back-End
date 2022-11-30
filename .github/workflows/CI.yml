@@ -21,3 +21,9 @@ jobs:
         run: chmod +x ./gradlew
       - name: Run build with Gradle Wrapper
         run: ./gradlew build
+      - name: Run static code analysis
+        uses: SonarSource/sonarqube-scan-action@master
+        env:
+          SONAR_HOST_URL: ${{ secrets.SONARQUBE_HOST }}
+          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
+

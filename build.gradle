@@ -1,6 +1,8 @@
 plugins {
     id 'java'
     id 'io.quarkus'
+    id 'jacoco'
+    id "org.sonarqube" version "3.4.0.2513"
 }
 
 repositories {
@@ -44,6 +46,15 @@ compileTestJava {
     options.encoding = 'UTF-8'
 }
 
+
 test {
 	systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
+    finalizedBy jacocoTestReport // Run each time tests are run.
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+    dependsOn test // Let tests be finished before making a report.
 }
