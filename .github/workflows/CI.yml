@@ -15,9 +15,13 @@ jobs:
     steps:
       - name: Checkout project sources
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
       - name: Run build with Gradle Wrapper
         run: ./gradlew build
+      - name: SonarQube scan
+        run: ./gradlew sonarqube -D"sonar.host.url=${{ secrets.SONARQUBE_HOST }}" -D"sonar.login=${{ secrets.SONARQUBE_TOKEN }}"
