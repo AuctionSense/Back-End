@@ -58,9 +58,3 @@ jacocoTestReport {
     }
     dependsOn test // Let tests be finished before making a report.
 }
-
-sonarqube {
-    properties{
-        property "sonar.projectKey", "org.auctionsense:quarkus-auctionsense"
-    }
-}
