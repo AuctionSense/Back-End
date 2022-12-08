@@ -1,7 +1,7 @@
 package org.auctionsense.domain;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import javax.persistence.Entity;
@@ -23,7 +23,7 @@ public class Bid {
     @NotBlank(message = "Amount cannot be blank!")
     private BigDecimal amount;
     @NotBlank(message = "Date cannot be blank")
-    private Date date;
+    private LocalDateTime date;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "user_id_fk"))
     private User user;
@@ -45,10 +45,10 @@ public class Bid {
         this.amount = amount;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }
