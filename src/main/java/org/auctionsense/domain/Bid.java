@@ -51,11 +51,4 @@ public class Bid {
     public void setDate(Date date) {
         this.date = date;
     }
-
-    public BidHistory getBidHistory() {
-        return bidHistory;
-    }
-    public void setBidHistory(BidHistory bidHistory) {
-        this.bidHistory = bidHistory;
-    }
 }
