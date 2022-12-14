@@ -15,7 +15,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="id")
 @Table(name = "users")
 @NamedQueries({
     @NamedQuery(name = "User.getByEmail", query = "from User where email = :email"),
@@ -28,10 +32,10 @@ public class User {
     @NotBlank(message = "Email cannot be blank.")
     private String email;
     @NotBlank(message = "Balance cannot be empty.")
-    @Column(precision=6, scale=2)
+    @Column(precision=6, scale=2, name = "balance")
     private BigDecimal balance;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Bid> bid;
+    private List<Bid> bids;
 
     public User() {
 
@@ -61,12 +65,12 @@ public class User {
     public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
-
-    public List<Bid> getBid() {
-        return bid;
+    
+    public List<Bid> getBids() {
+        return bids;
     }
 
-    public void setBid(List<Bid> bid) {
-        this.bid = bid;
+    public void setBids(List<Bid> bid) {
+        this.bids = bid;
     }
 }

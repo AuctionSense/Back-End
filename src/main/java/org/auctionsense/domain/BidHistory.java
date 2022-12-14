@@ -12,9 +12,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="id")
 @Table(name = "bid_history")
-@NamedQuery(name = "BidHistory.getById", query = "from BidHistory where id = :id")
+@NamedQuery(name = "BidHistory.getById", query = "select bh from BidHistory bh inner join fetch bh.bids b left outer join fetch b.user u where bh.id = :id")
 public class BidHistory {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -24,6 +28,11 @@ public class BidHistory {
 
     public BidHistory() {
         
+    }
+
+    public BidHistory(UUID id, List<Bid> bids) {
+        this.id = id;
+        this.bids = bids;
     }
 
     public UUID getId() {
@@ -41,5 +50,6 @@ public class BidHistory {
     public void setBids(List<Bid> bids) {
         this.bids = bids;
     }
+
 }
 

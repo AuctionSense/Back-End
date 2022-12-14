@@ -22,7 +22,8 @@ import javax.validation.constraints.NotBlank;
 @NamedQueries({
     @NamedQuery(name = "Products.getByCategory", query = "from Product p " +
     "where p.category.name = :category"),
-    @NamedQuery(name = "Product.getByName", query = "from Product where name = :name")
+    @NamedQuery(name = "Product.getByName", query = "from Product where name = :name"),
+    @NamedQuery(name = "Product.updatePrice", query = "update Product set price = :price where name = :name"),
 })
 public class Product {
     @Id

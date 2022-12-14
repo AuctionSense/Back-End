@@ -1,5 +1,6 @@
 package org.auctionsense.resource;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -9,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.auctionsense.domain.Bid;
 import org.auctionsense.domain.BidHistory;
 import org.auctionsense.service.BidService;
 
@@ -21,6 +23,12 @@ public class BidResource {
 
     public BidResource() {
 
+    }
+
+    @GET
+    public List<Bid> getAllBids()
+    {
+        return bidService.getAllBids();
     }
 
     @Path("/history/{id}")

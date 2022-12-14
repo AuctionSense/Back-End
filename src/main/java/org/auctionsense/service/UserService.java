@@ -3,6 +3,7 @@ package org.auctionsense.service;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import org.auctionsense.domain.User;
 import org.auctionsense.repository.UserRepository;
 
 import io.quarkus.panache.common.Parameters;
@@ -22,5 +23,10 @@ public class UserService {
         }
 
         return true;
+    }
+
+    public User getUserByEmail(String email)
+    {
+        return userRepository.find("#User.getByEmail", Parameters.with("email", email)).firstResult();
     }
 }

@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -31,6 +32,15 @@ public class Bid {
     @JoinColumn(name = "bid_history_id", foreignKey = @ForeignKey(name = "bid_history_id_fk"))
     private BidHistory bidHistory;
 
+    public Bid() {
+        
+    }
+
+    public Bid(UUID id, BigDecimal amount) {
+        this.id = id;
+        this.amount = amount;
+    }
+
     public UUID getId() {
         return id;
     }
@@ -50,5 +60,21 @@ public class Bid {
     }
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+    
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public BidHistory getBidHistory() {
+        return bidHistory;
+    }
+
+    public void setBidHistory(BidHistory bidHistory) {
+        this.bidHistory = bidHistory;
     }
 }
