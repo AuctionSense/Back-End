@@ -9,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -21,9 +20,7 @@ public class Bid {
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
-    @NotBlank(message = "Amount cannot be blank!")
     private BigDecimal amount;
-    @NotBlank(message = "Date cannot be blank")
     private LocalDateTime date;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "user_id_fk"))

@@ -12,11 +12,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import utils.CustomSerializer;
 
 @Entity
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="id")
 @Table(name = "bid_history")
 @NamedQuery(name = "BidHistory.getById", query = "select bh from BidHistory bh inner join fetch bh.bids b left outer join fetch b.user u where bh.id = :id")
 public class BidHistory {
@@ -24,6 +24,7 @@ public class BidHistory {
     @GeneratedValue(generator = "UUID")
     private UUID id;
     @OneToMany(mappedBy = "bidHistory", cascade = CascadeType.ALL)
+    @JsonSerialize(using = CustomSerializer.class)
     private List<Bid> bids = new ArrayList<>();
 
     public BidHistory() {

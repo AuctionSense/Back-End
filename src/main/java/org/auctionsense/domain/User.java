@@ -15,11 +15,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import utils.CustomSerializer;
 
 @Entity
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="id")
 @Table(name = "users")
 @NamedQueries({
     @NamedQuery(name = "User.getByEmail", query = "from User where email = :email"),
@@ -35,6 +35,7 @@ public class User {
     @Column(precision=6, scale=2, name = "balance")
     private BigDecimal balance;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonSerialize(using = CustomSerializer.class)
     private List<Bid> bids;
 
     public User() {

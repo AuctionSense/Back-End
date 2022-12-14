@@ -53,12 +53,17 @@ public class ProductService {
         
         BidHistory bidHistory = currentProduct.getBidHistory();
         List<Bid> bids = bidHistory.getBids();
-        User userHighestBid = bids.get(bids.size() - 1).getUser();
-        if (userHighestBid.getEmail().equals(body.get("user")))
+
+        if (!bids.isEmpty())
         {
-            return Uni.createFrom().item("Cannot bid again if you are already the highest bidder.");
+            User userHighestBid = bids.get(bids.size() - 1).getUser();
+            if (userHighestBid.getEmail().equals(body.get("user")))
+            {
+                return Uni.createFrom().item("Cannot bid again if you are already the highest bidder.");
+            } 
         } 
-        else if (body.get("user").equals("undefined"))
+        
+        if (body.get("user").equals("undefined"))
         {
             return Uni.createFrom().item("Cannot bid on items if you are not logged in.");
         }
