@@ -30,7 +30,7 @@ public class ProductResourceTest {
     .when().get("/name/testItemTwo")
     .then()
     .statusCode(StatusCode.OK)
-    .body("size()", is(3),
+    .body("size()", is(5),
         "name", is("testItemTwo"),
         "description", is("This is the second item!"));
   }

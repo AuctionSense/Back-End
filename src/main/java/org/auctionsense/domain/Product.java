@@ -17,6 +17,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 @Entity
 @Table(name = "products")
 @NamedQueries({
@@ -38,7 +41,8 @@ public class Product {
     private Category category;
     @Column(precision=6, scale=2)
     private BigDecimal price;
-    @OneToOne(optional = false)
+    @OneToOne
+    @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(name = "bid_history_id")
     private BidHistory bidHistory;
 
