@@ -18,7 +18,7 @@ import utils.CustomSerializer;
 
 @Entity
 @Table(name = "bid_history")
-@NamedQuery(name = "BidHistory.getById", query = "select bh from BidHistory bh inner join fetch bh.bids b left outer join fetch b.user u where bh.id = :id")
+@NamedQuery(name = "BidHistory.getById", query = "select bh from BidHistory bh where bh.id = :id")
 public class BidHistory {
     @Id
     @GeneratedValue(generator = "UUID")

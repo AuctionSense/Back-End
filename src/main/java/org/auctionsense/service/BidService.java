@@ -52,6 +52,7 @@ public class BidService {
     public void addBidToHistory(JsonObject body)
     {
         User user = userService.getUserByEmail(body.getString("user"));
+        
         BidHistory bidHistory = getBidHistoryById(UUID.fromString(body.getString("bidHistoryId")));
 
         Bid bid = new Bid();

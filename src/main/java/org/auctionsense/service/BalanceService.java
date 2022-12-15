@@ -11,6 +11,9 @@ import org.auctionsense.repository.UserRepository;
 
 import io.quarkus.panache.common.Parameters;
 import io.quarkus.security.identity.SecurityIdentity;
+import io.quarkus.vertx.ConsumeEvent;
+import io.smallrye.common.annotation.Blocking;
+import io.vertx.core.json.JsonObject;
 
 @ApplicationScoped
 public class BalanceService {
@@ -65,5 +68,16 @@ public class BalanceService {
         catch (Exception error) {
             return String.format("{\"message\": \"%s\"}", error.getMessage());
         }
+    }
+
+    @ConsumeEvent("UpdateProductPrice")
+    @Transactional
+    @Blocking
+    public void UpdateBalanceOnPayment(JsonObject body)
+    {
+        User user = userService.getUserByEmail(body.getString("user"));
+        BigDecimal amount = new BigDecimal(body.getString("amount"));
+        BigDecimal newBalance = user.getBalance().subtract(amount);
+        userRepository.update("#User.updateBalance", Parameters.with("email", body.getString("user")).and("balance", newBalance));
     }
 }

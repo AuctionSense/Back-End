@@ -26,6 +26,9 @@ public class ProductService {
     @Inject
     EventBus eventBus;
 
+    @Inject
+    UserService userService;
+
     public ProductService()
     {
 
@@ -68,6 +71,13 @@ public class ProductService {
             return Uni.createFrom().item("Cannot bid on items if you are not logged in.");
         }
 
+        User user = userService.getUserByEmail(body.get("user"));
+
+        if (user.getBalance().compareTo(new BigDecimal(body.get("amount"))) < 0)
+        {
+            return Uni.createFrom().item("You do not have enough balance, you have to add more if you want to bid on this item.");
+        }
+        
         JsonObject json = JsonObject.mapFrom(body);
         json.put("bidHistoryId", bidHistory.getId().toString());
         eventBus.publish("UpdateProductPrice", json);
